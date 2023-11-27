@@ -1,8 +1,11 @@
 import './env.js'
+import { Settings } from 'luxon'
 import lodash from 'lodash'
 import commands from './commands.js'
 import logger from './logger.js'
 import bot from './bot.js'
+
+Settings.defaultLocale = process.env.DEFAULT_LOCALE || 'en'
 
 async function start(bot) {
   try {
