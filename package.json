@@ -1,0 +1,28 @@
+{
+  "name": "sleepcalendarbot",
+  "version": "0.0.1",
+  "description": "Telegram bot for tracking sleep using Google Calendar",
+  "main": "bot/index.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/aristov/sleepcalendarbot.git"
+  },
+  "keywords": [
+    "telegram",
+    "bot",
+    "sleep",
+    "google",
+    "calendar",
+    "tracking",
+    "log"
+  ],
+  "author": "Vyacheslav Aristov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aristov/sleepcalendarbot/issues"
+  },
+  "homepage": "https://github.com/aristov/sleepcalendarbot#readme"
+}
