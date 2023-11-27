@@ -3,8 +3,12 @@
   "version": "0.0.1",
   "description": "Telegram bot for tracking sleep using Google Calendar",
   "main": "bot/index.js",
+  "type": "module",
   "scripts": {
-    "test": "ava"
+    "nodemon": "nodemon",
+    "start": "node .",
+    "test": "ava",
+    "watch": "ava --watch"
   },
   "repository": {
     "type": "git",
@@ -24,5 +28,19 @@
   "bugs": {
     "url": "https://github.com/aristov/sleepcalendarbot/issues"
   },
-  "homepage": "https://github.com/aristov/sleepcalendarbot#readme"
+  "homepage": "https://github.com/aristov/sleepcalendarbot#readme",
+  "dependencies": {
+    "@grammyjs/auto-retry": "^1.1.1",
+    "dotenv": "^16.3.1",
+    "googleapis": "^128.0.0",
+    "grammy": "^1.19.2",
+    "lodash": "^4.17.21",
+    "luxon": "^3.4.4",
+    "nodemon": "^3.0.1",
+    "pino": "^8.16.2",
+    "pino-pretty": "^10.2.3"
+  },
+  "devDependencies": {
+    "ava": "^5.3.1"
+  }
 }
