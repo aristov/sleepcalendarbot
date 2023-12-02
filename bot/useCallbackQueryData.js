@@ -1,11 +1,16 @@
 import { DateTime, Duration } from 'luxon'
 import calendar from './calendar.js'
+import keyboard from './keyboard.js'
+
+const calendarId = process.env.GOOGLE_CALENDAR_ID
+const summary = process.env.EVENT_SUMMARY_TEXT || 'Sleep'
+const wakeUpText = process.env.WAKEUP_TEXT || 'Sleep log entry added'
 
 export async function useCallbackQueryData(ctx) {
   const start = DateTime.fromISO(ctx.callbackQuery.data)
   const end = DateTime.now()
-  await calendar.events.insert({
-    calendarId : process.env.GOOGLE_CALENDAR_ID,
+  calendarId && await calendar.events.insert({
+    calendarId,
     resource : {
       start : {
         dateTime : start.toISO(),
@@ -13,7 +18,7 @@ export async function useCallbackQueryData(ctx) {
       end : {
         dateTime : end.toISO(),
       },
-      summary : process.env.EVENT_SUMMARY_TEXT,
+      summary,
       colorId : process.env.EVENT_COLOR_ID,
       reminders : {
         useDefault : false,
@@ -31,9 +36,10 @@ export async function useCallbackQueryData(ctx) {
       diff.seconds,
   })
   const durationString = duration.toHuman()
+  const text = `${ wakeUpText }\n\n${ startString } — ${ endString }\n${ durationString }`
+  await ctx.reply(text, {
+    reply_markup : keyboard,
+  })
   await ctx.deleteMessage()
-  await ctx.reply(
-    `Sleep log entry added\n\n${ startString } — ${ endString }\n${ durationString }`,
-  )
   await ctx.answerCallbackQuery()
 }

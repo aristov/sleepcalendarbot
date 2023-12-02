@@ -2,7 +2,7 @@ import fs from 'node:fs/promises'
 
 const cache = {}
 
-export function useHtml(basename) {
+export function useHtml(basename, options) {
   return async ctx => {
     let html = cache[basename]
     if(!html) {
@@ -13,6 +13,7 @@ export function useHtml(basename) {
     await ctx.reply(html, {
       parse_mode : 'HTML',
       disable_web_page_preview : true,
+      ...options,
     })
   }
 }
