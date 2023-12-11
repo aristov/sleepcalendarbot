@@ -5,4 +5,7 @@ const keyboard = Keyboard.from([
   [Keyboard.text(text)],
 ])
 
+keyboard.resized()
+keyboard.oneTime()
+
 export default keyboard
