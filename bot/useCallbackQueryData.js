@@ -37,9 +37,9 @@ export async function useCallbackQueryData(ctx) {
   })
   const durationString = duration.toHuman()
   const text = `${ wakeUpText }\n\n${ startString } — ${ endString }\n${ durationString }`
+  await ctx.deleteMessage()
   await ctx.reply(text, {
     reply_markup : keyboard,
   })
-  await ctx.deleteMessage()
   await ctx.answerCallbackQuery()
 }
